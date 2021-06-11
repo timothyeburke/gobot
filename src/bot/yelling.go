@@ -48,10 +48,7 @@ func Yelling(b *Bot, m *Message, u *User) {
 
 	rand.Seed(time.Now().Unix())
 
-	const alwaysMarkov = true
-
-	var hasPunctuation = regexp.MustCompile(`[!?.]\s*$`)
-	if (alwaysMarkov || hasPunctuation.MatchString(m.Message)) {
+	if (rand.Intn(100) > 30) {
 		chain := gomarkov.NewChain(1)
 
 		rand.Shuffle(len(yells), func(i, j int) { yells[i], yells[j] = yells[j], yells[i] })
